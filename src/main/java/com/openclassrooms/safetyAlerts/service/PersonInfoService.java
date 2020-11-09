@@ -7,6 +7,7 @@ import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -15,6 +16,9 @@ public class PersonInfoService implements IpersonInfoService {
 
     @Autowired
     private DataRepository dataRepository;
+
+    @Autowired
+    private Person person;
 
     @Override
     public Collection<String> getPersonInfo(String birthdate) {
@@ -26,6 +30,21 @@ public class PersonInfoService implements IpersonInfoService {
             personInfo.add(person.getAddress() + person.getEmail());
         }
         return personInfo;
+    }
+
+    @Override
+    public Collection<PersonInfo> getPersonInfo2(String lastname, String firstname) {
+        Collection<Person> collectionPerson = person.collectionPerson(lastname, firstname);
+        Collection<PersonInfo> personInfoCollection = new ArrayList<>();
+        for (Person person : collectionPerson) {
+            PersonInfo personInfo = new PersonInfo();
+            personInfo.setFirstName(person.getFirstName());
+            personInfo.setLastname(person.getLastName());
+            personInfo.setAddress(person.getAddress());
+            personInfo.setEmail(person.getEmail());
+            personInfoCollection.add(personInfo);
+        }
+        return personInfoCollection;
     }
 }
 

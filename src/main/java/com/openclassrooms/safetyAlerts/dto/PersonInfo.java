@@ -8,6 +8,7 @@ public class PersonInfo {
     private String lastName;
     private String address;
     private String birthdate;
+    private String email;
     private List<String> medications = new ArrayList<String>();
     private List<String> allergies = new ArrayList<String>();
 
@@ -19,12 +20,12 @@ public class PersonInfo {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastName = lastname;
     }
 
     public String getAddress() {
@@ -41,6 +42,14 @@ public class PersonInfo {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<String> getMedications() {

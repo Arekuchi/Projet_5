@@ -5,6 +5,7 @@ import com.openclassrooms.safetyAlerts.dao.Database;
 import com.openclassrooms.safetyAlerts.dao.Firestation;
 import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
 import com.openclassrooms.safetyAlerts.dao.Person;
+import com.openclassrooms.safetyAlerts.dto.PersonInfo;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -17,8 +18,11 @@ import java.util.Map;
 public class DataRepository {
     // Permets de mapper du json en objet java
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    // Cet objet va represetner le json en mémoire JAVA
-    private static Database database;
+    // Cet objet va representer le json en mémoire JAVA
+    private Database database;
+    public Database getDatabase(){
+        return this.database;
+    }
 
     // Utilise les déclarations ci dessus pour mapper l'objet.
     public DataRepository() throws IOException {

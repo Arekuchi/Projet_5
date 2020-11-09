@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 
+//essai solo, n'est pas le bon controller pour Person
 @RestController
 public class ControllerPerson {
     @GetMapping("/communityemail")
