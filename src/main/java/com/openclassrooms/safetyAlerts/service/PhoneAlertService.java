@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 @Service
 public class PhoneAlertService implements IPhoneAlertService {
@@ -28,6 +29,18 @@ public class PhoneAlertService implements IPhoneAlertService {
             phoneAlert.setPhone(person.getPhone());
 
             phoneAlertList.add(phoneAlert);
+        }
+        return phoneAlertList;
+    }
+
+    public Collection<String> getPhoneList(String firestationStation) {
+        Collection<String> phoneAlertList = new HashSet<>();
+        Firestation firestation = dataRepository.getFirestationByStation(firestationStation);
+        String address = firestation.getAddress();
+        Collection<Person> personList = dataRepository.getPersonByAddress(address);
+
+        for (Person person : personList) {
+            phoneAlertList.add(person.getPhone());
         }
         return phoneAlertList;
     }
