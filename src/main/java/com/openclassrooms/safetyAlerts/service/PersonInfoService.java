@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -29,7 +28,6 @@ public class PersonInfoService implements IpersonInfoService {
             personInfo.setLastName(person.getLastName());
             personInfo.setAddress(person.getAddress());
             personInfo.setEmail(person.getEmail());
-
 
             Medicalrecord medicalrecordPerson = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             personInfo.setMedications(medicalrecordPerson.getMedications());

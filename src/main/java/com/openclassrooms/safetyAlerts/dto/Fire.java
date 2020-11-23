@@ -1,18 +1,16 @@
 package com.openclassrooms.safetyAlerts.dto;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonInfo {
+public class Fire {
     private String firstName;
     private String lastName;
-    private String address;
-    private String birthdate;
-    private String email;
+    private String phone;
     private List<String> medications = new ArrayList<String>();
     private List<String> allergies = new ArrayList<String>();
     private int age;
+    private String station;
 
     public String getFirstName() {
         return firstName;
@@ -30,37 +28,19 @@ public class PersonInfo {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<String> getMedications() {
         return medications;
     }
 
-    public void setMedications(List<String> medications) {
-        this.medications = medications;
-    }
+    public void setMedications(List<String> medications) { this.medications = medications; }
 
     public List<String> getAllergies() {
         return allergies;
@@ -76,5 +56,13 @@ public class PersonInfo {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getStation() {
+        return station;
+    }
+
+    public void setStation(String station) {
+        this.station = station;
     }
 }
