@@ -53,6 +53,7 @@ public class DataRepository {
         return personList;
     }
 
+
     public Collection<Person> getPersonByAddress(String address) {
         Collection<Person> personCollection = new ArrayList<>();
         for (Person person : database.getPersons()) {
@@ -62,6 +63,8 @@ public class DataRepository {
         }
         return personCollection;
     }
+
+
 
     //method pour récup les medical record d'une person par nom : getmedicalbyname
     public Medicalrecord getMedicalRecordByName(String lastName, String firstName) {
@@ -80,6 +83,17 @@ public class DataRepository {
         Database db = this.getDatabase();
         for (Firestation firestation : db.getFirestations()) {
             if (firestation.getAddress().equalsIgnoreCase(address)) {
+                firestationAddress = firestation;
+            }
+        }
+        return firestationAddress;
+    }
+
+    public Firestation getFirestationByStation(String firestationNumber) {
+        Firestation firestationAddress = new Firestation();
+        Database db = this.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getStation().equalsIgnoreCase(firestationNumber)) {
                 firestationAddress = firestation;
             }
         }
