@@ -16,7 +16,7 @@ public class PhoneAlertController {
     IPhoneAlertService phoneAlertService;
 
     @GetMapping(path = "phoneAlert")
-    public Collection<String> getPhoneAlert(@RequestParam String firestation) {
+    public Collection<PhoneAlert> getPhoneAlert(@RequestParam String firestation) {
         return phoneAlertService.getPhoneAlert(firestation);
     }
 }

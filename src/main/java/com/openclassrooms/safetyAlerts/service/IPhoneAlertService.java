@@ -1,7 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.dto.PhoneAlert;
+
 import java.util.Collection;
 
 public interface IPhoneAlertService {
-    Collection<String> getPhoneAlert(String firestation);
+    Collection<PhoneAlert> getPhoneAlert(String firestation);
 }

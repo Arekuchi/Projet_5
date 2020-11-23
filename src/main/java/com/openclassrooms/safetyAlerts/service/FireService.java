@@ -23,6 +23,7 @@ public class FireService implements IFireService {
     public Collection<Fire> getFire(String address) {
         Collection<Fire> fireCollection = new ArrayList<>();
         Collection<Person> personList = dataRepository.getPersonByAddress(address);
+
         for (Person person : personList) {
             Fire fire = new Fire();
             fire.setFirstName(person.getFirstName());
