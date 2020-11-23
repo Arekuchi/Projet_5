@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 @Service
-public class PersonService implements IPersonService {
+public class CommunityEmail implements ICommunityEmail {
 
     @Autowired
     private DataRepository dataRepository;

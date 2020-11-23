@@ -19,13 +19,10 @@ public class PersonInfoService implements IpersonInfoService {
     @Autowired
     private DataRepository dataRepository;
 
-
-
-    //rajouter personinfo age
     @Override
     public Collection<PersonInfo> getPersonInfo(String lastName, String firstName) {
         Collection<PersonInfo> personInfoCollection = new ArrayList<>();
-        List<Person> personList = dataRepository.getPersonsByName(lastName,firstName);
+        List<Person> personList = dataRepository.getPersonsByName(lastName, firstName);
         for (Person person : personList) {
             PersonInfo personInfo = new PersonInfo();
             personInfo.setFirstName(person.getFirstName());
@@ -37,9 +34,8 @@ public class PersonInfoService implements IpersonInfoService {
             Medicalrecord medicalrecordPerson = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             personInfo.setMedications(medicalrecordPerson.getMedications());
             personInfo.setAllergies(medicalrecordPerson.getAllergies());
-            personInfo.setBirthdate(medicalrecordPerson.getBirthdate()); // a convertir en âge
-            personInfo.setAge(CalculateAge.calculateAge(personInfo.getBirthdate()));
-
+            personInfo.setAge(CalculateAge.calculateAge(medicalrecordPerson.getBirthdate()));
+            // si on veut rajouter la date de naissance personInfo.setBirthdate(medicalrecordPerson.getBirthdate());
 
             personInfoCollection.add(personInfo);
         }

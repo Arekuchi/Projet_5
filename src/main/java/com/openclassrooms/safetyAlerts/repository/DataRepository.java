@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class DataRepository {
@@ -55,7 +54,7 @@ public class DataRepository {
     }
 
 
-        //method pour récup les medical record d'une person par nom : getmedicalbyname
+    //method pour récup les medical record d'une person par nom : getmedicalbyname
     public Medicalrecord getMedicalRecordByName(String lastName, String firstName) {
         Medicalrecord medicalrecordInfo = new Medicalrecord();
         Database db = this.getDatabase();
@@ -68,33 +67,31 @@ public class DataRepository {
     }
 
 
-
-
-        // TODO = Faire les méthodes pour récupéré Firestations et Medicalrecords
-        public Collection<Firestation> getFirestation (String address){
-            Collection<Firestation> firestationCollection = new ArrayList<>();
-            for (Firestation firestation : database.getFirestations()) {
-                if (firestation.getAddress().equalsIgnoreCase(address)) {
-                    firestationCollection.add(firestation);
-                }
+    // TODO = Faire les méthodes pour récupéré Firestations et Medicalrecords
+    public Collection<Firestation> getFirestation(String address) {
+        Collection<Firestation> firestationCollection = new ArrayList<>();
+        for (Firestation firestation : database.getFirestations()) {
+            if (firestation.getAddress().equalsIgnoreCase(address)) {
+                firestationCollection.add(firestation);
             }
-            return firestationCollection;
         }
-
-        public Collection<Medicalrecord> getMedicalrecords (String birthdate){
-            Collection<Medicalrecord> medicalrecordCollection = new ArrayList<>();
-            for (Medicalrecord medicalrecord : database.getMedicalrecords()) {
-                if (medicalrecord.getBirthdate().equalsIgnoreCase(birthdate)) {
-                    medicalrecordCollection.add(medicalrecord);
-                }
-            }
-            return medicalrecordCollection;
-        }
-
-
-        public static void main (String[]args) throws IOException {
-            DataRepository dataRepository = new DataRepository();
-            System.out.println(dataRepository.database.getPersons().size());
-        }
-
+        return firestationCollection;
     }
+
+    public Collection<Medicalrecord> getMedicalrecords(String birthdate) {
+        Collection<Medicalrecord> medicalrecordCollection = new ArrayList<>();
+        for (Medicalrecord medicalrecord : database.getMedicalrecords()) {
+            if (medicalrecord.getBirthdate().equalsIgnoreCase(birthdate)) {
+                medicalrecordCollection.add(medicalrecord);
+            }
+        }
+        return medicalrecordCollection;
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        DataRepository dataRepository = new DataRepository();
+        System.out.println(dataRepository.database.getPersons().size());
+    }
+
+}
