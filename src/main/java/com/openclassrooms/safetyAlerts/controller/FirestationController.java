@@ -15,6 +15,7 @@ public class FirestationController {
     @Autowired
     IFirestationService firestationService;
 
+    // besoin de dto ?
     @GetMapping(path = "firestation")
     public Collection<FirestationDTO> getFirestationDTO(@RequestParam String stationNumber) {
         return firestationService.getFirestationDTO(stationNumber);

@@ -19,6 +19,8 @@ public class FireService implements IFireService {
     @Autowired
     private DataRepository dataRepository;
 
+
+    //ne renvoir que les numéris lié à l'addresse   748 Townings Dr
     @Override
     public Collection<Fire> getFire(String address) {
         Collection<Fire> fireCollection = new ArrayList<>();
@@ -30,10 +32,10 @@ public class FireService implements IFireService {
             fire.setLastName(person.getLastName());
             fire.setPhone(person.getPhone());
 
-            Medicalrecord medicalracordFire = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
-            fire.setMedications(medicalracordFire.getMedications());
-            fire.setAllergies(medicalracordFire.getAllergies());
-            fire.setAge(CalculateAge.calculateAge(medicalracordFire.getBirthdate()));
+            Medicalrecord medicalrecordFire = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
+            fire.setMedications(medicalrecordFire.getMedications());
+            fire.setAllergies(medicalrecordFire.getAllergies());
+            fire.setAge(CalculateAge.calculateAge(medicalrecordFire.getBirthdate()));
 
             Firestation firestation = dataRepository.getFirestationByAddress(address);
             fire.setStation(firestation.getStation());
