@@ -15,11 +15,6 @@ public class PhoneAlertController {
     @Autowired
     IPhoneAlertService phoneAlertService;
 
-    @GetMapping(path = "phoneAlert")
-    public Collection<PhoneAlert> getPhoneAlert(@RequestParam String firestation) {
-        return phoneAlertService.getPhoneAlert(firestation);
-    }
-
     @GetMapping(path = "phoneAlertList")
     public Collection<String> getPhoneList(@RequestParam String firestation) {
         return phoneAlertService.getPhoneList(firestation);
