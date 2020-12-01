@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.ICommunityEmail;
 import com.openclassrooms.safetyAlerts.dao.Person;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;

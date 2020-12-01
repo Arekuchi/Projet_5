@@ -1,13 +1,12 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.IPhoneAlertService;
 import com.openclassrooms.safetyAlerts.dao.Firestation;
 import com.openclassrooms.safetyAlerts.dao.Person;
-import com.openclassrooms.safetyAlerts.dto.PhoneAlert;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;

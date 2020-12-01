@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyAlerts.service;
+package com.openclassrooms.safetyAlerts.Interface;
 
 import com.openclassrooms.safetyAlerts.dto.Fire;
 

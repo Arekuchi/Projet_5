@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyAlerts.controller;
 
 import com.openclassrooms.safetyAlerts.dto.Fire;
-import com.openclassrooms.safetyAlerts.service.IFireService;
+import com.openclassrooms.safetyAlerts.Interface.IFireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

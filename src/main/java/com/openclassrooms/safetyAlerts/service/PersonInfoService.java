@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.IpersonInfoService;
 import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
 import com.openclassrooms.safetyAlerts.dao.Person;
 import com.openclassrooms.safetyAlerts.dto.PersonInfo;

@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.IFloodService;
 import com.openclassrooms.safetyAlerts.dao.Firestation;
 import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
 import com.openclassrooms.safetyAlerts.dao.Person;

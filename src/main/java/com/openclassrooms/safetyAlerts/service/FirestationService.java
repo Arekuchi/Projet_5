@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.IFirestationService;
 import com.openclassrooms.safetyAlerts.dao.Firestation;
 import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
 import com.openclassrooms.safetyAlerts.dao.Person;
@@ -14,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class FirestationService implements IFirestationService{
+public class FirestationService implements IFirestationService {
 
     @Autowired
     private DataRepository dataRepository;

@@ -1,10 +1,10 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.Interface.IFireService;
 import com.openclassrooms.safetyAlerts.dao.Firestation;
 import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
 import com.openclassrooms.safetyAlerts.dao.Person;
 import com.openclassrooms.safetyAlerts.dto.Fire;
-import com.openclassrooms.safetyAlerts.dto.PersonInfo;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;

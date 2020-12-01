@@ -1,7 +1,6 @@
 package com.openclassrooms.safetyAlerts.controller;
 
-import com.openclassrooms.safetyAlerts.dto.PhoneAlert;
-import com.openclassrooms.safetyAlerts.service.IPhoneAlertService;
+import com.openclassrooms.safetyAlerts.Interface.IPhoneAlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

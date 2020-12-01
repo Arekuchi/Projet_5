@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyAlerts.controller;
 
-import com.openclassrooms.safetyAlerts.service.ICommunityEmail;
+import com.openclassrooms.safetyAlerts.Interface.ICommunityEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
