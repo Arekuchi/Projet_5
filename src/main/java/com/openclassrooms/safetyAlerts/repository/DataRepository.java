@@ -54,14 +54,14 @@ public class DataRepository {
     }
 
 
-    public Collection<Person> getPersonByAddress(String address) {
-        Collection<Person> personCollection = new ArrayList<>();
+    public List<Person> getPersonByAddress(String address) {
+        List<Person> personList = new ArrayList<>();
         for (Person person : database.getPersons()) {
             if (person.getAddress().equalsIgnoreCase(address)) {
-                personCollection.add(person);
+                personList.add(person);
             }
         }
-        return personCollection;
+        return personList;
     }
 
 
@@ -100,7 +100,31 @@ public class DataRepository {
         return firestationAddress;
     }
 
-    // TODO = Faire les méthodes pour récupéré Firestations et Medicalrecords
+    public List<Firestation> getFirestationAddressByStationList(List<String> firestationNumber) {
+        List<Firestation> firestationAddress = new ArrayList<Firestation>();
+        Database db = this.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getStation().equals(firestationNumber)) {
+                firestationAddress.add(firestation);
+            }
+        }
+        return firestationAddress;
+    }
+
+    // faire un List<String>
+
+    public List<Firestation> getFirestationAddressByStation(String stationNumber) {
+        List<Firestation> firestationList = new ArrayList<Firestation>();
+        Database db = this.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getStation().equals(stationNumber)) {
+                firestationList.add(firestation);
+            }
+        }
+        return firestationList;
+    }
+
+    // TODO = Faire les méthodes pour récupérer Firestations et Medicalrecords
     public Collection<Firestation> getFirestation(String address) {
         Collection<Firestation> firestationCollection = new ArrayList<>();
         for (Firestation firestation : database.getFirestations()) {

@@ -1,11 +1,16 @@
 package com.openclassrooms.safetyAlerts.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Flood {
     private String firstName;
     private String lastName;
     private String address;
     private String phone;
     private int age;
+    private List<String> medications = new ArrayList<String>();
+    private List<String> allergies = new ArrayList<String>();
 
     public String getFirstName() {
         return firstName;
@@ -45,5 +50,21 @@ public class Flood {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<String> getMedications() {
+        return medications;
+    }
+
+    public void setMedications(List<String> medications) {
+        this.medications = medications;
+    }
+
+    public List<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<String> allergies) {
+        this.allergies = allergies;
     }
 }

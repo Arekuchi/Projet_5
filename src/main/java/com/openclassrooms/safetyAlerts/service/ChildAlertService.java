@@ -22,6 +22,9 @@ public class ChildAlertService implements IChildAlertService {
         Collection<ChildAlert> childAlertCollection = new ArrayList<>();
         Collection<Person> personList = dataRepository.getPersonByAddress(address);
 
+
+        int childCount = 0;
+
         for (Person person : personList) {
             ChildAlert childAlert = new ChildAlert();
             childAlert.setFirstName(person.getFirstName());
@@ -30,10 +33,19 @@ public class ChildAlertService implements IChildAlertService {
             Medicalrecord medicalrecordChild = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             childAlert.setAge(CalculateAge.calculateAge(medicalrecordChild.getBirthdate()));
 
+            int age = childAlert.getAge();
+
+            if (age <= 18)
+                childCount++;
+
 
             childAlertCollection.add(childAlert);
         }
         // faire un condition, IF au moins 1 personne age>18, THEN return childAlertCollection, ELSE return null
+        if (childCount>1)
+        return childAlertCollection;
+        else
+            childAlertCollection.clear();
         return childAlertCollection;
     }
 }

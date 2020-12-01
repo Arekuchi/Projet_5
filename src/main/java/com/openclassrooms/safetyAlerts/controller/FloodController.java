@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 public class FloodController {
@@ -17,7 +18,7 @@ public class FloodController {
     IFloodService floodService;
 
     @GetMapping(path = "flood/stations")
-    public Collection<Flood> getFlood(@RequestParam @Valid String station) {
-        return floodService.getFlood(station);
+    public Collection<Flood> getFlood(@RequestParam List<String> stations) {
+        return floodService.getFlood(stations);
     }
 }
