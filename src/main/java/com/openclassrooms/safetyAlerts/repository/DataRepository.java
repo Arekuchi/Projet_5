@@ -53,7 +53,7 @@ public class DataRepository {
         return personList;
     }
 
-
+    // méthode pour récup une liste de person par addresse avec un String
     public List<Person> getPersonByAddress(String address) {
         List<Person> personList = new ArrayList<>();
         for (Person person : database.getPersons()) {
@@ -64,9 +64,7 @@ public class DataRepository {
         return personList;
     }
 
-
-
-    //method pour récup les medical record d'une person par nom : getmedicalbyname
+    //method pour récup les medical record d'une person par nom complet (lastname, firstname)
     public Medicalrecord getMedicalRecordByName(String lastName, String firstName) {
         Medicalrecord medicalrecordInfo = new Medicalrecord();
         Database db = this.getDatabase();
@@ -78,6 +76,7 @@ public class DataRepository {
         return medicalrecordInfo;
     }
 
+    // méthode pour récup les Firestation par addresse avec un String
     public Firestation getFirestationByAddress(String address) {
         Firestation firestationAddress = new Firestation();
         Database db = this.getDatabase();
@@ -89,6 +88,7 @@ public class DataRepository {
         return firestationAddress;
     }
 
+    // // méthode pour récup les Firestation par numéro de Station avec un String
     public Firestation getFirestationByStation(String firestationNumber) {
         Firestation firestationAddress = new Firestation();
         Database db = this.getDatabase();
@@ -100,6 +100,7 @@ public class DataRepository {
         return firestationAddress;
     }
 
+    // méthode pour récup une liste de Firestation par une liste de numéro de station en List<String>
     public List<Firestation> getFirestationAddressByStationList(List<String> firestationNumber) {
         List<Firestation> firestationAddress = new ArrayList<Firestation>();
         Database db = this.getDatabase();
@@ -111,8 +112,7 @@ public class DataRepository {
         return firestationAddress;
     }
 
-    // faire un List<String>
-
+    // méthode pour récup une liste de Firestation par numéro de station en String
     public List<Firestation> getFirestationAddressByStation(String stationNumber) {
         List<Firestation> firestationList = new ArrayList<Firestation>();
         Database db = this.getDatabase();
@@ -124,7 +124,7 @@ public class DataRepository {
         return firestationList;
     }
 
-    // TODO = Faire les méthodes pour récupérer Firestations et Medicalrecords
+    // méthode pour récup les Firestation par addresse en String
     public Collection<Firestation> getFirestation(String address) {
         Collection<Firestation> firestationCollection = new ArrayList<>();
         for (Firestation firestation : database.getFirestations()) {
@@ -135,6 +135,7 @@ public class DataRepository {
         return firestationCollection;
     }
 
+    // méthode pour récup une Collection de MedicalRecord avec la date de naissance en String
     public Collection<Medicalrecord> getMedicalrecords(String birthdate) {
         Collection<Medicalrecord> medicalrecordCollection = new ArrayList<>();
         for (Medicalrecord medicalrecord : database.getMedicalrecords()) {
@@ -144,7 +145,6 @@ public class DataRepository {
         }
         return medicalrecordCollection;
     }
-
 
     public static void main(String[] args) throws IOException {
         DataRepository dataRepository = new DataRepository();

@@ -22,8 +22,6 @@ public class ChildAlertService implements IChildAlertService {
     public Collection<ChildAlert> getChildAlert(String address) {
         Collection<ChildAlert> childAlertCollection = new ArrayList<>();
         Collection<Person> personList = dataRepository.getPersonByAddress(address);
-
-
         int childCount = 0;
 
         for (Person person : personList) {
@@ -33,12 +31,9 @@ public class ChildAlertService implements IChildAlertService {
 
             Medicalrecord medicalrecordChild = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             childAlert.setAge(CalculateAge.calculateAge(medicalrecordChild.getBirthdate()));
-
             int age = childAlert.getAge();
-
             if (age <= 18)
                 childCount++;
-
 
             childAlertCollection.add(childAlert);
         }

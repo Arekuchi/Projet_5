@@ -20,12 +20,13 @@ public class FloodService implements IFloodService {
     @Autowired
     DataRepository dataRepository;
 
+
+    // dernier controller qui ne fonctionne pas
     @Override
     public Collection<Flood> getFlood(List<String> stations) {
         Collection<Flood> floodCollection = new ArrayList<>();
         List<Firestation> firestationFlood = dataRepository.getFirestationAddressByStationList(stations);
         System.out.println("La liste contient : " + firestationFlood);
-
 
         for (Firestation firestation : firestationFlood) {
             List<Person> personListByAddress = dataRepository.getPersonByAddress(firestation.getAddress());

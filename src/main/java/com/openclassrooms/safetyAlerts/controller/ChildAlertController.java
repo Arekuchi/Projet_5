@@ -15,7 +15,6 @@ public class ChildAlertController {
     @Autowired
     IChildAlertService childAlertService;
 
-    // besoin de DTO pour l'âge
     @GetMapping(path = "childAlert")
     public Collection<ChildAlert> getChildAlert(@RequestParam String address) {
 

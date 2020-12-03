@@ -16,7 +16,6 @@ public class CommunityEmail implements ICommunityEmail {
     @Autowired
     private DataRepository dataRepository;
 
-// C'est une méthode pour récupérer la liste des Emails avec city en paramètre
     @Override
     public Collection<String> getCommunityEmail(String city) {
         Collection<String> personEmail = new HashSet<String>();

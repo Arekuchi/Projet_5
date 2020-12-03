@@ -13,7 +13,6 @@ import java.util.Collection;
 @RestController
 public class    PersonInfoController {
 
-        //On appelle un service pour remonter les infos dont on a besoin pour les réponses d'API
         @Autowired
         private IpersonInfoService personInfoService;
 

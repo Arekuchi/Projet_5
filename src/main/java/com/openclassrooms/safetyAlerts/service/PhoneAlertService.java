@@ -27,7 +27,6 @@ public class PhoneAlertService implements IPhoneAlertService {
                 phoneAlertList.add(person.getPhone());
             }
         }
-
         return phoneAlertList;
     }
 }

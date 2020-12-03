@@ -24,7 +24,6 @@ public class FirestationService implements IFirestationService {
     public Collection<FirestationDTO> getFirestationDTO(String stationNumber) {
         Collection<FirestationDTO> firestationDTOCollection = new ArrayList<>();
         List<Firestation> firestationList = dataRepository.getFirestationAddressByStation(stationNumber);
-
         int adultCount = 0;
         int childCount = 0;
 
@@ -52,40 +51,7 @@ public class FirestationService implements IFirestationService {
 
                 firestationDTOCollection.add(firestationDTO);
             }
-
         }
-
         return firestationDTOCollection;
     }
-
-
-    //Firestation firestation = dataRepository.getFirestationByStation(stationNumber);
-    /*List<String> firestationAddress = new ArrayList<>();
-        while (firestation.getAddress() != null) {
-            firestationAddress.add(firestation.getAddress());
-            if (firestationAddress.contains(firestation.getAddress())) {
-                break;
-            }
-        }
-        Collection<Person> personList = dataRepository.getPersonByAddress(address);
-        int adult = 0; // firestationDTO.setAdult 0 >> i++
-        int child = 0;
-
-        for (Person person : personList) {
-            FirestationDTO firestationDTO = new FirestationDTO();
-            firestationDTO.setFirstName(person.getFirstName());
-            firestationDTO.setLastName(person.getLastName());
-            firestationDTO.setAddress(person.getAddress());
-            firestationDTO.setPhone(person.getPhone());
-
-            Medicalrecord medicalrecordFire = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
-            firestationDTO.setAge(CalculateAge.calculateAge(medicalrecordFire.getBirthdate()));
-
-
-            firestationDTOCollection.add(firestationDTO);
-
-        */
-
-    //String address = firestation.getAddress();
-
 }

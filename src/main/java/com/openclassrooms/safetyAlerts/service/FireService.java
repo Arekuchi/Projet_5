@@ -19,8 +19,6 @@ public class FireService implements IFireService {
     @Autowired
     private DataRepository dataRepository;
 
-
-    //ne renvoir que les numéris lié à l'addresse   748 Townings Dr
     @Override
     public Collection<Fire> getFire(String address) {
         Collection<Fire> fireCollection = new ArrayList<>();
