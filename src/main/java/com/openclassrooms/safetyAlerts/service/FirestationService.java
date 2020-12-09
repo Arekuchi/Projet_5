@@ -1,9 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IFirestationService;
-import com.openclassrooms.safetyAlerts.dao.Firestation;
-import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
-import com.openclassrooms.safetyAlerts.dao.Person;
+import com.openclassrooms.safetyAlerts.model.Firestation;
+import com.openclassrooms.safetyAlerts.model.Medicalrecord;
+import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.FirestationDTO;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;

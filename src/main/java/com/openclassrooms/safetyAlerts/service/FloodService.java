@@ -1,10 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IFloodService;
-import com.openclassrooms.safetyAlerts.dao.Firestation;
-import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
-import com.openclassrooms.safetyAlerts.dao.Person;
-import com.openclassrooms.safetyAlerts.dto.Fire;
+import com.openclassrooms.safetyAlerts.model.Firestation;
+import com.openclassrooms.safetyAlerts.model.Medicalrecord;
+import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.Flood;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;

@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyAlerts.dao;
+package com.openclassrooms.safetyAlerts.model;
 
 import java.util.ArrayList;
 import java.util.List;

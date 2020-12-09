@@ -1,10 +1,10 @@
 package com.openclassrooms.safetyAlerts.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.openclassrooms.safetyAlerts.dao.Database;
-import com.openclassrooms.safetyAlerts.dao.Firestation;
-import com.openclassrooms.safetyAlerts.dao.Medicalrecord;
-import com.openclassrooms.safetyAlerts.dao.Person;
+import com.openclassrooms.safetyAlerts.model.Database;
+import com.openclassrooms.safetyAlerts.model.Firestation;
+import com.openclassrooms.safetyAlerts.model.Medicalrecord;
+import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.exceptions.DataRepositoryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

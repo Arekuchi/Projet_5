@@ -1,5 +1,7 @@
-package com.openclassrooms.safetyAlerts.dao;
+package com.openclassrooms.safetyAlerts.model;
 
+
+import java.util.Objects;
 
 //création d'un modèle de "personne" pour l'utilisation des données json
 public class Person {
@@ -54,5 +56,17 @@ public class Person {
         this.email = input;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(getFirstName(), person.getFirstName()) && Objects.equals(getLastName(), person.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
+    }
 }
 

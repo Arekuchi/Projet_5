@@ -1,4 +1,4 @@
-package com.openclassrooms.safetyAlerts.dao;
+package com.openclassrooms.safetyAlerts.model;
 
 public class Firestation {
     private String address;
