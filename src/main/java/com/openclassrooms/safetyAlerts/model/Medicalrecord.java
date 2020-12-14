@@ -2,6 +2,7 @@ package com.openclassrooms.safetyAlerts.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Medicalrecord {
     private String firstName;
@@ -48,5 +49,18 @@ public class Medicalrecord {
 
     public void setAllergies(List<String> allergies) {
         this.allergies = allergies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Medicalrecord medicalrecord = (Medicalrecord) o;
+        return Objects.equals(getFirstName(), medicalrecord.getFirstName()) && Objects.equals(getLastName(), medicalrecord.getLastName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstName(), getLastName());
     }
 }

@@ -1,22 +1,47 @@
 package com.openclassrooms.safetyAlerts.controller;
 
+import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dto.FirestationDTO;
 import com.openclassrooms.safetyAlerts.Interface.IFirestationService;
+import com.openclassrooms.safetyAlerts.model.Firestation;
+import com.openclassrooms.safetyAlerts.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
 
 @RestController
 public class FirestationController {
 
     @Autowired
-    IFirestationService firestationService;
+    private IFirestationService firestationService;
+
+    @Autowired
+    private IFirestationDAO firestationDAO;
 
     @GetMapping(path = "firestation")
     public Collection<FirestationDTO> getFirestationDTO(@RequestParam String stationNumber) {
         return firestationService.getFirestationDTO(stationNumber);
+    }
+
+    // Creation d'une firestation
+    @PostMapping(path="firestation")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createFirestation(@RequestBody @Valid Firestation firestation) { firestationDAO.createFirestation(firestation); }
+
+    // Delete = HttpStatus.RESET_CONTENT
+    @DeleteMapping(path="firestation")
+    @ResponseStatus(HttpStatus.RESET_CONTENT)
+    public void deleteFirestation(@RequestBody @Valid Firestation firestation) {
+        firestationDAO.deleteFirestation(firestation);
+    }
+
+    // Update = HttpStatus.NO_CONTENT
+    @PutMapping(path="firestation")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateFirestation(@RequestBody @Valid Firestation firestation) {
+        firestationDAO.updateFirestation(firestation);
     }
 }

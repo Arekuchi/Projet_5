@@ -2,7 +2,6 @@ package com.openclassrooms.safetyAlerts.serviceDAO;
 
 
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
-import com.openclassrooms.safetyAlerts.dao.PersonDAO;
 import com.openclassrooms.safetyAlerts.exceptions.DataAlreadyExistException;
 import com.openclassrooms.safetyAlerts.exceptions.DataNotFoundException;
 import com.openclassrooms.safetyAlerts.model.Person;
