@@ -1,6 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IFireService;
+import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
+import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
@@ -17,12 +20,18 @@ import java.util.Collection;
 public class FireService implements IFireService {
 
     @Autowired
-    private DataRepository dataRepository;
+    private IPersonDAO personDAO;
+
+    @Autowired
+    private IMedicalrecordDAO medicalrecordDAO;
+
+    @Autowired
+    private IFirestationDAO firestationDAO;
 
     @Override
     public Collection<Fire> getFire(String address) {
         Collection<Fire> fireCollection = new ArrayList<>();
-        Collection<Person> personList = dataRepository.getPersonByAddress(address);
+        Collection<Person> personList = personDAO.getPersonByAddress(address);
 
         for (Person person : personList) {
             Fire fire = new Fire();
@@ -30,12 +39,12 @@ public class FireService implements IFireService {
             fire.setLastName(person.getLastName());
             fire.setPhone(person.getPhone());
 
-            Medicalrecord medicalrecordFire = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
+            Medicalrecord medicalrecordFire = medicalrecordDAO.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             fire.setMedications(medicalrecordFire.getMedications());
             fire.setAllergies(medicalrecordFire.getAllergies());
             fire.setAge(CalculateAge.calculateAge(medicalrecordFire.getBirthdate()));
 
-            Firestation firestation = dataRepository.getFirestationByAddress(address);
+            Firestation firestation = firestationDAO.getFirestationByAddress(address);
             fire.setStation(firestation.getStation());
 
             fireCollection.add(fire);

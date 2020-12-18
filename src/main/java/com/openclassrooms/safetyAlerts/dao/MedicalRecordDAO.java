@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.dao;
 
+import com.openclassrooms.safetyAlerts.model.Database;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,17 @@ public class MedicalRecordDAO implements IMedicalrecordDAO {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Medicalrecord getMedicalRecordByName(String lastName, String firstName) {
+        Medicalrecord medicalrecordInfo = new Medicalrecord();
+        Database db = dataRepository.getDatabase();
+        for (Medicalrecord medicalrecord : db.getMedicalrecords()) {
+            if (medicalrecord.getLastName().equalsIgnoreCase(lastName) && medicalrecord.getFirstName().equalsIgnoreCase(firstName)) {
+                medicalrecordInfo = medicalrecord;
+            }
+        }
+        return medicalrecordInfo;
     }
 }

@@ -1,6 +1,8 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IPhoneAlertService;
+import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
@@ -15,14 +17,17 @@ import java.util.List;
 public class PhoneAlertService implements IPhoneAlertService {
 
     @Autowired
-    private DataRepository dataRepository;
+    private IFirestationDAO firestationDAO;
+
+    @Autowired
+    private IPersonDAO personDAO;
 
     public Collection<String> getPhoneList(String firestationStation) {
         Collection<String> phoneAlertList = new HashSet<>();
-        List<Firestation> firestationList = dataRepository.getFirestationAddressByStation(firestationStation);
+        List<Firestation> firestationList = firestationDAO.getFirestationAddressByStation(firestationStation);
 
         for (Firestation firestation : firestationList) {
-            List<Person> personListByAddress = dataRepository.getPersonByAddress(firestation.getAddress());
+            List<Person> personListByAddress = personDAO.getPersonByAddress(firestation.getAddress());
             for (Person person : personListByAddress) {
                 phoneAlertList.add(person.getPhone());
             }

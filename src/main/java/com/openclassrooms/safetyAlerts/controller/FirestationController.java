@@ -19,7 +19,7 @@ public class FirestationController {
     private IFirestationService firestationService;
 
     @Autowired
-    private IFirestationDAO firestationDAO;
+    private com.openclassrooms.safetyAlerts.serviceDAO.IFirestationService firestationServiceImpl;
 
     @GetMapping(path = "firestation")
     public Collection<FirestationDTO> getFirestationDTO(@RequestParam String stationNumber) {
@@ -29,19 +29,19 @@ public class FirestationController {
     // Creation d'une firestation
     @PostMapping(path="firestation")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFirestation(@RequestBody @Valid Firestation firestation) { firestationDAO.createFirestation(firestation); }
+    public void createFirestation(@RequestBody @Valid Firestation firestation) { firestationServiceImpl.createFirestation(firestation); }
 
     // Delete = HttpStatus.RESET_CONTENT
     @DeleteMapping(path="firestation")
     @ResponseStatus(HttpStatus.RESET_CONTENT)
     public void deleteFirestation(@RequestBody @Valid Firestation firestation) {
-        firestationDAO.deleteFirestation(firestation);
+        firestationServiceImpl.deleteFirestation(firestation);
     }
 
     // Update = HttpStatus.NO_CONTENT
     @PutMapping(path="firestation")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateFirestation(@RequestBody @Valid Firestation firestation) {
-        firestationDAO.updateFirestation(firestation);
+        firestationServiceImpl.updateFirestation(firestation);
     }
 }

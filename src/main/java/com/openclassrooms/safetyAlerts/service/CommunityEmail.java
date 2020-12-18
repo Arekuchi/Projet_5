@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.ICommunityEmail;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ import java.util.HashSet;
 public class CommunityEmail implements ICommunityEmail {
 
     @Autowired
-    private DataRepository dataRepository;
+    private IPersonDAO personDAO;
 
     @Override
     public Collection<String> getCommunityEmail(String city) {
         Collection<String> personEmail = new HashSet<String>();
-        for (Person person : dataRepository.getPersonsByCity(city)) {
+        for (Person person : personDAO.getPersonsByCity(city)) {
             personEmail.add(person.getEmail());
         }
         return personEmail;

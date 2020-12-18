@@ -1,9 +1,13 @@
 package com.openclassrooms.safetyAlerts.dao;
 
+import com.openclassrooms.safetyAlerts.model.Database;
 import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class FirestationDAO implements IFirestationDAO {
@@ -38,6 +42,42 @@ public class FirestationDAO implements IFirestationDAO {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Firestation getFirestationByAddress(String address) {
+        Firestation firestationAddress = new Firestation();
+        Database db = dataRepository.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getAddress().equalsIgnoreCase(address)) {
+                firestationAddress = firestation;
+            }
+        }
+        return firestationAddress;
+    }
+
+    @Override
+    public List<Firestation> getFirestationAddressByStation(String stationNumber) {
+        List<Firestation> firestationList = new ArrayList<Firestation>();
+        Database db = dataRepository.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getStation().equals(stationNumber)) {
+                firestationList.add(firestation);
+            }
+        }
+        return firestationList;
+    }
+
+    @Override
+    public List<Firestation> getFirestationAddressByStationList(List<String> firestationNumber) {
+        List<Firestation> firestationAddress = new ArrayList<Firestation>();
+        Database db = dataRepository.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getStation().equals(firestationNumber)) {
+                firestationAddress.add(firestation);
+            }
+        }
+        return firestationAddress;
     }
 
 

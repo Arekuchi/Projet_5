@@ -1,6 +1,8 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IpersonInfoService;
+import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.PersonInfo;
@@ -17,12 +19,15 @@ import java.util.List;
 public class PersonInfoService implements IpersonInfoService {
 
     @Autowired
-    private DataRepository dataRepository;
+    private IPersonDAO personDAO;
+
+    @Autowired
+    private IMedicalrecordDAO medicalrecordDAO;
 
     @Override
     public Collection<PersonInfo> getPersonInfo(String lastName, String firstName) {
         Collection<PersonInfo> personInfoCollection = new ArrayList<>();
-        List<Person> personList = dataRepository.getPersonsByName(lastName, firstName);
+        List<Person> personList = personDAO.getPersonsByName(lastName, firstName);
         for (Person person : personList) {
             PersonInfo personInfo = new PersonInfo();
             personInfo.setFirstName(person.getFirstName());
@@ -30,7 +35,7 @@ public class PersonInfoService implements IpersonInfoService {
             personInfo.setAddress(person.getAddress());
             personInfo.setEmail(person.getEmail());
 
-            Medicalrecord medicalrecordPerson = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
+            Medicalrecord medicalrecordPerson = medicalrecordDAO.getMedicalRecordByName(person.getLastName(), person.getFirstName());
             personInfo.setMedications(medicalrecordPerson.getMedications());
             personInfo.setAllergies(medicalrecordPerson.getAllergies());
             personInfo.setAge(CalculateAge.calculateAge(medicalrecordPerson.getBirthdate()));

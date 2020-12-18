@@ -54,9 +54,9 @@ public class Medicalrecord {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Person)) return false;
-        Medicalrecord medicalrecord = (Medicalrecord) o;
-        return Objects.equals(getFirstName(), medicalrecord.getFirstName()) && Objects.equals(getLastName(), medicalrecord.getLastName());
+        if (!(o instanceof Medicalrecord)) return false;
+        Medicalrecord that = (Medicalrecord) o;
+        return Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName());
     }
 
     @Override

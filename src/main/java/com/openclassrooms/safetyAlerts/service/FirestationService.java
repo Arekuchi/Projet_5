@@ -1,6 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IFirestationService;
+import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
+import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
@@ -18,17 +21,23 @@ import java.util.List;
 public class FirestationService implements IFirestationService {
 
     @Autowired
-    private DataRepository dataRepository;
+    private IFirestationDAO firestationDAO;
+
+    @Autowired
+    private IPersonDAO personDAO;
+
+    @Autowired
+    private IMedicalrecordDAO medicalrecordDAO;
 
     @Override
     public Collection<FirestationDTO> getFirestationDTO(String stationNumber) {
         Collection<FirestationDTO> firestationDTOCollection = new ArrayList<>();
-        List<Firestation> firestationList = dataRepository.getFirestationAddressByStation(stationNumber);
+        List<Firestation> firestationList = firestationDAO.getFirestationAddressByStation(stationNumber);
         int adultCount = 0;
         int childCount = 0;
 
         for (Firestation firestation : firestationList) {
-            List<Person> personListByAddress = dataRepository.getPersonByAddress(firestation.getAddress());
+            List<Person> personListByAddress = personDAO.getPersonByAddress(firestation.getAddress());
 
             for (Person person : personListByAddress) {
                 FirestationDTO firestationDTO = new FirestationDTO();
@@ -37,7 +46,7 @@ public class FirestationService implements IFirestationService {
                 firestationDTO.setAddress(person.getAddress());
                 firestationDTO.setPhone(person.getPhone());
 
-                Medicalrecord medicalrecordFire = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
+                Medicalrecord medicalrecordFire = medicalrecordDAO.getMedicalRecordByName(person.getLastName(), person.getFirstName());
                 int age = CalculateAge.calculateAge(medicalrecordFire.getBirthdate());
                 firestationDTO.setAge(age);
 

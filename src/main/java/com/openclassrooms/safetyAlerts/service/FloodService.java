@@ -1,6 +1,9 @@
 package com.openclassrooms.safetyAlerts.service;
 
 import com.openclassrooms.safetyAlerts.Interface.IFloodService;
+import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
+import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
@@ -18,22 +21,27 @@ import java.util.List;
 public class FloodService implements IFloodService {
 
     @Autowired
-    DataRepository dataRepository;
+    private IFirestationDAO firestationDAO;
 
+    @Autowired
+    private IPersonDAO personDAO;
+
+    @Autowired
+    private IMedicalrecordDAO medicalrecordDAO;
 
     // dernier controller qui ne fonctionne pas
     @Override
     public Collection<Flood> getFlood(List<String> stations) {
         Collection<Flood> floodCollection = new ArrayList<>();
-        List<Firestation> firestationFlood = dataRepository.getFirestationAddressByStationList(stations);
+        List<Firestation> firestationFlood = firestationDAO.getFirestationAddressByStationList(stations);
 
         for (String stationNumber : stations) {
             // récup les addresses
-            List<Firestation> firestationListAddress = dataRepository.getFirestationAddressByStation(stationNumber);
+            List<Firestation> firestationListAddress = firestationDAO.getFirestationAddressByStation(stationNumber);
 
             for (Firestation firestation : firestationListAddress) {
 
-                List<Person> personListByAddress = dataRepository.getPersonByAddress(firestation.getAddress());
+                List<Person> personListByAddress = personDAO.getPersonByAddress(firestation.getAddress());
 
                 for (Person person : personListByAddress) {
                     Flood flood = new Flood();
@@ -43,7 +51,7 @@ public class FloodService implements IFloodService {
                     flood.setPhone(person.getPhone());
                     flood.setAddress(person.getAddress());
 
-                    Medicalrecord medicalrecordFlood = dataRepository.getMedicalRecordByName(person.getLastName(), person.getFirstName());
+                    Medicalrecord medicalrecordFlood = medicalrecordDAO.getMedicalRecordByName(person.getLastName(), person.getFirstName());
                     flood.setMedications(medicalrecordFlood.getMedications());
                     flood.setAllergies(medicalrecordFlood.getAllergies());
                     flood.setAge(CalculateAge.calculateAge(medicalrecordFlood.getBirthdate()));

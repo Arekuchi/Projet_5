@@ -6,7 +6,9 @@ import com.openclassrooms.safetyAlerts.exceptions.DataNotFoundException;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MedicalrecordServiceImpl implements IMedicalrecordService {
 
     @Autowired
@@ -22,6 +24,8 @@ public class MedicalrecordServiceImpl implements IMedicalrecordService {
             medicalrecordDAO.createMedicalrecord(medicalrecord);
             return true;
         }
+
+
         else {
             throw new DataAlreadyExistException("Le medicalrecord de " + medicalrecord.getFirstName() + " " + medicalrecord.getLastName() + " existe déjà. ");
         }

@@ -26,12 +26,12 @@ public class Firestation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Firestation)) return false;
-        Firestation firestation = (Firestation) o;
-        return Objects.equals(getAddress(), firestation.getAddress()) && Objects.equals(getStation(), firestation.getStation());
+        Firestation that = (Firestation) o;
+        return Objects.equals(getAddress(), that.getAddress());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAddress(), getStation());
+        return Objects.hash(getAddress());
     }
 }
