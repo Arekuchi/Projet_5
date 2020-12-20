@@ -2,6 +2,7 @@ package com.openclassrooms.safetyAlerts.dao;
 
 import com.openclassrooms.safetyAlerts.model.Firestation;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -14,4 +15,5 @@ public interface IFirestationDAO {
     Firestation getFirestationByAddress(String address);
     List<Firestation> getFirestationAddressByStation(String stationNumber);
     List<Firestation> getFirestationAddressByStationList(List<String> firestationNumber);
+    Collection<Firestation> getFirestations(String address);
 }

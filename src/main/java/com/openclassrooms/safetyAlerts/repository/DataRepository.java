@@ -2,9 +2,6 @@ package com.openclassrooms.safetyAlerts.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openclassrooms.safetyAlerts.model.Database;
-import com.openclassrooms.safetyAlerts.model.Firestation;
-import com.openclassrooms.safetyAlerts.model.Medicalrecord;
-import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.exceptions.DataRepositoryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 @Repository
 public class DataRepository {
@@ -69,29 +63,6 @@ public class DataRepository {
 
     public void setCommit(boolean commit) {
         this.commit = commit;
-    }
-
-
-    // méthode pour récup les Firestation par addresse en String
-    public Collection<Firestation> getFirestation(String address) {
-        Collection<Firestation> firestationCollection = new ArrayList<>();
-        for (Firestation firestation : database.getFirestations()) {
-            if (firestation.getAddress().equalsIgnoreCase(address)) {
-                firestationCollection.add(firestation);
-            }
-        }
-        return firestationCollection;
-    }
-
-    // méthode pour récup une Collection de MedicalRecord avec la date de naissance en String
-    public Collection<Medicalrecord> getMedicalrecords(String birthdate) {
-        Collection<Medicalrecord> medicalrecordCollection = new ArrayList<>();
-        for (Medicalrecord medicalrecord : database.getMedicalrecords()) {
-            if (medicalrecord.getBirthdate().equalsIgnoreCase(birthdate)) {
-                medicalrecordCollection.add(medicalrecord);
-            }
-        }
-        return medicalrecordCollection;
     }
 
     public static void main(String[] args) throws IOException {

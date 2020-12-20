@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -78,6 +79,18 @@ public class FirestationDAO implements IFirestationDAO {
             }
         }
         return firestationAddress;
+    }
+
+    @Override
+    public Collection<Firestation> getFirestations(String address) {
+        Collection<Firestation> firestationCollection = new ArrayList<>();
+        Database db = dataRepository.getDatabase();
+        for (Firestation firestation : db.getFirestations()) {
+            if (firestation.getAddress().equalsIgnoreCase(address)) {
+                firestationCollection.add(firestation);
+            }
+        }
+        return firestationCollection;
     }
 
 

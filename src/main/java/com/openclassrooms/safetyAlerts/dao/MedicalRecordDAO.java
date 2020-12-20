@@ -6,6 +6,9 @@ import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Service
 public class MedicalRecordDAO implements IMedicalrecordDAO {
 
@@ -51,5 +54,17 @@ public class MedicalRecordDAO implements IMedicalrecordDAO {
             }
         }
         return medicalrecordInfo;
+    }
+
+    @Override
+    public Collection<Medicalrecord> getMedicalrecords(String birthdate) {
+        Collection<Medicalrecord> medicalrecordCollection = new ArrayList<>();
+        Database db = dataRepository.getDatabase();
+        for (Medicalrecord medicalrecord : db.getMedicalrecords()) {
+            if (medicalrecord.getBirthdate().equalsIgnoreCase(birthdate)) {
+                medicalrecordCollection.add(medicalrecord);
+            }
+        }
+        return medicalrecordCollection;
     }
 }
