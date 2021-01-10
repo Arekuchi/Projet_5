@@ -1,11 +1,14 @@
 package com.openclassrooms.safetyAlerts.model;
 
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 //création d'un modèle de "personne" pour l'utilisation des données json
 public class Person {
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
     private String address;
     private String city;

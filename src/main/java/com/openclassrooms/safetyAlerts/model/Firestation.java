@@ -1,9 +1,12 @@
 package com.openclassrooms.safetyAlerts.model;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class Firestation {
+    @NotBlank
     private String address;
+    @NotBlank
     private String station;
 
     public String getAddress() {
