@@ -1,7 +1,9 @@
 package com.openclassrooms.safetyAlerts.serviceDAO;
 
 import com.openclassrooms.safetyAlerts.model.Firestation;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface IFirestationService {
 
     boolean createFirestation(Firestation firestation);

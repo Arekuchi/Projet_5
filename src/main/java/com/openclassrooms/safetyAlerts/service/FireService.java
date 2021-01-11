@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
-import com.openclassrooms.safetyAlerts.Interface.IFireService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IFireService;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
@@ -8,15 +8,13 @@ import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.Fire;
-import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Service
+
 public class FireService implements IFireService {
 
     @Autowired

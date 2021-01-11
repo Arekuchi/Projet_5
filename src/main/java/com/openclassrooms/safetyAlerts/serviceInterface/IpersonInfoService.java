@@ -1,11 +1,11 @@
-package com.openclassrooms.safetyAlerts.Interface;
+package com.openclassrooms.safetyAlerts.serviceInterface;
 
 import com.openclassrooms.safetyAlerts.dto.PersonInfo;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
+@Service
 public interface IpersonInfoService {
 
     Collection<PersonInfo> getPersonInfo(String lastname, String firstname);

@@ -1,6 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
-import com.openclassrooms.safetyAlerts.Interface.IFloodService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IFloodService;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
@@ -8,16 +8,14 @@ import com.openclassrooms.safetyAlerts.model.Firestation;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.Flood;
-import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Service
+
 public class FloodService implements IFloodService {
 
     @Autowired

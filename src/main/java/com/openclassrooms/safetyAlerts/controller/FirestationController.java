@@ -1,10 +1,8 @@
 package com.openclassrooms.safetyAlerts.controller;
 
-import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dto.FirestationDTO;
-import com.openclassrooms.safetyAlerts.Interface.IFirestationService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IFirestationService;
 import com.openclassrooms.safetyAlerts.model.Firestation;
-import com.openclassrooms.safetyAlerts.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

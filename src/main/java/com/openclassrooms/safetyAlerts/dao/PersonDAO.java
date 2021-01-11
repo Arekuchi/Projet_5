@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Service
+
 public class PersonDAO implements IPersonDAO {
 
     @Autowired
@@ -45,6 +45,11 @@ public class PersonDAO implements IPersonDAO {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<Person> getPersons() {
+        return dataRepository.getDatabase().getPersons();
     }
 
     @Override

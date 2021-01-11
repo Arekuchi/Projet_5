@@ -1,7 +1,8 @@
 package com.openclassrooms.safetyAlerts.controller;
 
 import com.openclassrooms.safetyAlerts.dto.ChildAlert;
-import com.openclassrooms.safetyAlerts.Interface.IChildAlertService;
+import com.openclassrooms.safetyAlerts.service.ChildAlertService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IChildAlertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import java.util.Collection;
 public class ChildAlertController {
 
     @Autowired
-    IChildAlertService childAlertService;
+    ChildAlertService childAlertService;
 
     @GetMapping(path = "childAlert")
     @ResponseStatus(HttpStatus.OK)

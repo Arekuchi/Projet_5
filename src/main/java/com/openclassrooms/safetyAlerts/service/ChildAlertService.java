@@ -1,26 +1,24 @@
 package com.openclassrooms.safetyAlerts.service;
 
-import com.openclassrooms.safetyAlerts.Interface.IChildAlertService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IChildAlertService;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.ChildAlert;
-import com.openclassrooms.safetyAlerts.repository.DataRepository;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Service
+
 public class ChildAlertService implements IChildAlertService {
 
     @Autowired
-    private IPersonDAO personDAO;
+    IPersonDAO personDAO;
     @Autowired
-    private IMedicalrecordDAO medicalrecordDAO;
+    IMedicalrecordDAO medicalrecordDAO;
 
     @Override
     public Collection<ChildAlert> getChildAlert(String address) {

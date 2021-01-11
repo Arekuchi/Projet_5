@@ -14,6 +14,18 @@ public class Medicalrecord {
     private List<String> medications = new ArrayList<String>();
     private List<String> allergies = new ArrayList<String>();
 
+    public Medicalrecord( String firstName, String lastName, String birthdate, List<String> medications, List<String> allergies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthdate = birthdate;
+        this.medications = medications;
+        this.allergies = allergies;
+    }
+
+    public Medicalrecord() {
+        //empty
+    }
+
     public String getFirstName() {
         return firstName;
     }

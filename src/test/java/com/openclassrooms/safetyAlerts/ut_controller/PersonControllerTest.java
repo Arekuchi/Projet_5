@@ -200,7 +200,7 @@ public class PersonControllerTest {
 
     }
 
-
+    // a déplacer dans test intégration /person
     @Test
     void getCommunityEmail() throws Exception {
         // on test getCommunityEmail

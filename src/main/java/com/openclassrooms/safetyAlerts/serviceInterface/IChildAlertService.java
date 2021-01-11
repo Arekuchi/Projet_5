@@ -1,10 +1,11 @@
-package com.openclassrooms.safetyAlerts.Interface;
+package com.openclassrooms.safetyAlerts.serviceInterface;
 
 import com.openclassrooms.safetyAlerts.dto.ChildAlert;
-import com.openclassrooms.safetyAlerts.dto.Fire;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public interface IChildAlertService {
 
     Collection<ChildAlert> getChildAlert(String address);

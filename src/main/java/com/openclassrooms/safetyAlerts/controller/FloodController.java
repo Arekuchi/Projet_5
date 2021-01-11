@@ -1,7 +1,7 @@
 package com.openclassrooms.safetyAlerts.controller;
 
 import com.openclassrooms.safetyAlerts.dto.Flood;
-import com.openclassrooms.safetyAlerts.Interface.IFloodService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IFloodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
