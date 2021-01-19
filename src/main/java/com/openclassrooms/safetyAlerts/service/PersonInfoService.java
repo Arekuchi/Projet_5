@@ -1,6 +1,7 @@
 package com.openclassrooms.safetyAlerts.service;
 
-import com.openclassrooms.safetyAlerts.serviceInterface.IpersonInfoService;
+import com.openclassrooms.safetyAlerts.exceptions.InvalidArgumentException;
+import com.openclassrooms.safetyAlerts.serviceInterface.IPersonInfoService;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.model.Medicalrecord;
@@ -8,24 +9,28 @@ import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.PersonInfo;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-
-public class PersonInfoService implements IpersonInfoService {
-
-    @Autowired
-    private IPersonDAO personDAO;
+@Service
+public class PersonInfoService implements IPersonInfoService {
 
     @Autowired
-    private IMedicalrecordDAO medicalrecordDAO;
+    IPersonDAO personDAO;
+
+    @Autowired
+    IMedicalrecordDAO medicalrecordDAO;
 
     @Override
     public Collection<PersonInfo> getPersonInfo(String lastName, String firstName) {
         Collection<PersonInfo> personInfoCollection = new ArrayList<>();
         List<Person> personList = personDAO.getPersonsByName(lastName, firstName);
+        if (lastName.isEmpty() && firstName.isEmpty()) {
+            throw new InvalidArgumentException("Le nom ne peut être vide");
+        }
         for (Person person : personList) {
             PersonInfo personInfo = new PersonInfo();
             personInfo.setFirstName(person.getFirstName());

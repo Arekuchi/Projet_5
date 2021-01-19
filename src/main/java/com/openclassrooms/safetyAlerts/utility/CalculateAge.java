@@ -1,10 +1,12 @@
 package com.openclassrooms.safetyAlerts.utility;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-
+@Service
 public class CalculateAge {
 
     private static LocalDate currentDate = LocalDate.now();

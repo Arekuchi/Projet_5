@@ -12,7 +12,7 @@ import javax.validation.Valid;
 public class PersonController {
 
     @Autowired
-    private IPersonService personService;
+    IPersonService personService;
 
     // Creation d'une personne
     @PostMapping(path="person")

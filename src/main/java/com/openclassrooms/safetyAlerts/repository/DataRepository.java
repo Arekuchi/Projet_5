@@ -20,7 +20,7 @@ public class DataRepository {
     private static Database database;
     // Boolean pour valider le commit (main OK, test NOT OK)
     private boolean commit = true;
-    private String DATA_JSON = "data.json";
+    String DATA_JSON = "data.json";
 
     public Database getDatabase() {
         return this.database;

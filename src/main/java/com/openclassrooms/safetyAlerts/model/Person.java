@@ -16,6 +16,11 @@ public class Person {
     private String phone;
     private String email;
 
+
+    public Person() {
+        // constructeur vide
+    }
+
     public Person(@NotBlank String firstName, @NotBlank String lastName, String address, String city, String zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;

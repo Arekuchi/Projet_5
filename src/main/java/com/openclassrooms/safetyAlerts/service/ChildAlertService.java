@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.exceptions.InvalidArgumentException;
 import com.openclassrooms.safetyAlerts.serviceInterface.IChildAlertService;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
@@ -8,11 +9,12 @@ import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.dto.ChildAlert;
 import com.openclassrooms.safetyAlerts.utility.CalculateAge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+@Service
 public class ChildAlertService implements IChildAlertService {
 
     @Autowired
@@ -25,6 +27,9 @@ public class ChildAlertService implements IChildAlertService {
         Collection<ChildAlert> childAlertCollection = new ArrayList<>();
         Collection<Person> personList = personDAO.getPersonByAddress(address);
         int childCount = 0;
+        if (address.isEmpty()) {
+            throw new InvalidArgumentException("L'adresse ne peut être vide");
+        }
 
         for (Person person : personList) {
             ChildAlert childAlert = new ChildAlert();

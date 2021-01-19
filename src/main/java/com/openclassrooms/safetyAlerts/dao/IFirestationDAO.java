@@ -1,12 +1,10 @@
 package com.openclassrooms.safetyAlerts.dao;
 
 import com.openclassrooms.safetyAlerts.model.Firestation;
-import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
 
-@Service
 public interface IFirestationDAO {
 
     boolean createFirestation(Firestation firestation);

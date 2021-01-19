@@ -14,10 +14,10 @@ import java.util.Collection;
 public class FirestationController {
 
     @Autowired
-    private IFirestationService firestationService;
+    IFirestationService firestationService;
 
     @Autowired
-    private com.openclassrooms.safetyAlerts.serviceDAO.IFirestationService firestationServiceImpl;
+    com.openclassrooms.safetyAlerts.serviceDAO.IFirestationService firestationServiceImpl;
 
     @GetMapping(path = "firestation")
     public Collection<FirestationDTO> getFirestationDTO(@RequestParam String stationNumber) {
