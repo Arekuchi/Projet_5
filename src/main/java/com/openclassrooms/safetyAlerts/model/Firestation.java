@@ -25,6 +25,17 @@ public class Firestation {
         this.station = input;
     }
 
+
+    public Firestation() {
+        // construteur vide
+    }
+
+    public Firestation(@NotBlank String address, @NotBlank String station) {
+        this.address = address;
+        this.station = station;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

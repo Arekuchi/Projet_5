@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.exceptions.InvalidArgumentException;
 import com.openclassrooms.safetyAlerts.serviceInterface.IFirestationService;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
@@ -34,6 +35,10 @@ public class FirestationService implements IFirestationService {
         List<Firestation> firestationList = firestationDAO.getFirestationAddressByStation(stationNumber);
         int adultCount = 0;
         int childCount = 0;
+
+        if (stationNumber.isEmpty()) {
+            throw new InvalidArgumentException("Le numéro de station ne peut être vide");
+        }
 
         for (Firestation firestation : firestationList) {
             List<Person> personListByAddress = personDAO.getPersonByAddress(firestation.getAddress());

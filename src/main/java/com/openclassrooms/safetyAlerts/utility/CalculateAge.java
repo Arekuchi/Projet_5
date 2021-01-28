@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-@Service
+
 public class CalculateAge {
 
     private static LocalDate currentDate = LocalDate.now();

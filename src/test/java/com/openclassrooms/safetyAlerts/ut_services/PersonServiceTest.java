@@ -1,8 +1,8 @@
 package com.openclassrooms.safetyAlerts.ut_services;
 
 
-import com.openclassrooms.safetyAlerts.dao.MedicalRecordDAO;
-import com.openclassrooms.safetyAlerts.dao.PersonDAO;
+import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
+import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
 import com.openclassrooms.safetyAlerts.dto.ChildAlert;
 import com.openclassrooms.safetyAlerts.dto.PersonInfo;
 import com.openclassrooms.safetyAlerts.exceptions.DataAlreadyExistException;
@@ -41,13 +41,13 @@ public class PersonServiceTest {
     PersoneServiceImpl personeServiceTest;
 
     @MockBean
-    PersonDAO personDAOMock;
+    IPersonDAO personDAOMock;
 
     @MockBean
     ICommunityEmail communityEmailMock;
 
     @MockBean
-    MedicalRecordDAO medicalRecordDAOMock;
+    IMedicalrecordDAO medicalRecordDAOMock;
 
     @MockBean
     IPersonInfoService personInfoServiceMock;
@@ -77,6 +77,9 @@ public class PersonServiceTest {
     PersonInfo personInfo = new PersonInfo();
     ChildAlert childAlert = new ChildAlert();
     Medicalrecord medicalrecordBerthelot = new Medicalrecord("Alexandre", "Berthelot", "15/03/1988", medications, allergies);
+
+
+
 
     @Test
     public void createExistingPersonTest() throws Exception {
@@ -309,6 +312,8 @@ public class PersonServiceTest {
 
     }
 
+
+
     @Test
     public void getValidChildByAddressTest() throws Exception {
 
@@ -343,7 +348,7 @@ public class PersonServiceTest {
         //then
         try {
             assertThat(childAlertServiceMock.getChildAlert(personBerthelot.getAddress())).size().isEqualTo(0);
-            verify(childAlertServiceMock, Mockito.times(1)).getChildAlert(personBerthelot.getAddress());
+            verify(childAlertServiceMock, Mockito.times(2)).getChildAlert(personBerthelot.getAddress());
         } catch (InvalidArgumentException iae) {
             assert (iae.getMessage().contains("Invalid Argument Exception"));
 
@@ -367,7 +372,7 @@ public class PersonServiceTest {
         //then
         try {
             assertThat(childAlertServiceMock.getChildAlert(personBerthelot.getAddress())).size().isEqualTo(0);
-            verify(childAlertServiceMock, Mockito.times(1)).getChildAlert(personBerthelot.getAddress());
+            verify(childAlertServiceMock, Mockito.times(2)).getChildAlert(personBerthelot.getAddress());
         } catch (InvalidArgumentException iae) {
             assert (iae.getMessage().contains("ne peut être vide"));
 

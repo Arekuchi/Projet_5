@@ -1,6 +1,5 @@
 package com.openclassrooms.safetyAlerts.serviceDAO;
 
-import com.openclassrooms.safetyAlerts.dao.FirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.exceptions.DataAlreadyExistException;
 import com.openclassrooms.safetyAlerts.exceptions.DataNotFoundException;

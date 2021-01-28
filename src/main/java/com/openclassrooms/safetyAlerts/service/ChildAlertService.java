@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static com.openclassrooms.safetyAlerts.utility.CalculateAge.calculateAge;
+
 @Service
 public class ChildAlertService implements IChildAlertService {
 

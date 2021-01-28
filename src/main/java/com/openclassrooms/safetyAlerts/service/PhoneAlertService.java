@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.exceptions.InvalidArgumentException;
 import com.openclassrooms.safetyAlerts.serviceInterface.IPhoneAlertService;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IPersonDAO;
@@ -16,14 +17,17 @@ import java.util.List;
 public class PhoneAlertService implements IPhoneAlertService {
 
     @Autowired
-    private IFirestationDAO firestationDAO;
+    IFirestationDAO firestationDAO;
 
     @Autowired
-    private IPersonDAO personDAO;
+    IPersonDAO personDAO;
 
     public Collection<String> getPhoneList(String firestationStation) {
         Collection<String> phoneAlertList = new HashSet<>();
         List<Firestation> firestationList = firestationDAO.getFirestationAddressByStation(firestationStation);
+        if (firestationStation.isEmpty()) {
+            throw new InvalidArgumentException("La station ne peut être vide");
+        }
 
         for (Firestation firestation : firestationList) {
             List<Person> personListByAddress = personDAO.getPersonByAddress(firestation.getAddress());

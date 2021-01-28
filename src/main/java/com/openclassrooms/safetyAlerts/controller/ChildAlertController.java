@@ -16,7 +16,7 @@ import java.util.Collection;
 public class ChildAlertController {
 
     @Autowired
-    ChildAlertService childAlertService;
+    IChildAlertService childAlertService;
 
     @GetMapping(path = "childAlert")
     @ResponseStatus(HttpStatus.OK)

@@ -1,5 +1,6 @@
 package com.openclassrooms.safetyAlerts.service;
 
+import com.openclassrooms.safetyAlerts.exceptions.InvalidArgumentException;
 import com.openclassrooms.safetyAlerts.serviceInterface.IFloodService;
 import com.openclassrooms.safetyAlerts.dao.IFirestationDAO;
 import com.openclassrooms.safetyAlerts.dao.IMedicalrecordDAO;
@@ -33,6 +34,10 @@ public class FloodService implements IFloodService {
     public Collection<Flood> getFlood(List<String> stations) {
         Collection<Flood> floodCollection = new ArrayList<>();
         List<Firestation> firestationFlood = firestationDAO.getFirestationAddressByStationList(stations);
+
+        if (stations.isEmpty()) {
+            throw new InvalidArgumentException("Les numéros de stations ne peuvent être vide");
+        }
 
         for (String stationNumber : stations) {
             // récup les addresses

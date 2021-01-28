@@ -1,0 +1,143 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Boyd",
+    "address": "1509 Culver St",
+    "phone": "841-874-6512",
+    "age": 36,
+    "medications": [
+      "aznol:350mg",
+      "hydrapermazol:100mg"
+    ],
+    "allergies": [
+      "nillacilan"
+    ]
+  },
+  {
+    "firstName": "Jacob",
+    "lastName": "Boyd",
+    "address": "1509 Culver St",
+    "phone": "841-874-6513",
+    "age": 31,
+    "medications": [
+      "pharmacol:5000mg",
+      "terazine:10mg",
+      "noznazol:250mg"
+    ],
+    "allergies": []
+  },
+  {
+    "firstName": "Tenley",
+    "lastName": "Boyd",
+    "address": "1509 Culver St",
+    "phone": "841-874-6512",
+    "age": 8,
+    "medications": [],
+    "allergies": [
+      "peanut"
+    ]
+  },
+  {
+    "firstName": "Roger",
+    "lastName": "Boyd",
+    "address": "1509 Culver St",
+    "phone": "841-874-6512",
+    "age": 3,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Felicia",
+    "lastName": "Boyd",
+    "address": "1509 Culver St",
+    "phone": "841-874-6544",
+    "age": 35,
+    "medications": [
+      "tetracyclaz:650mg"
+    ],
+    "allergies": [
+      "xilliathal"
+    ]
+  },
+  {
+    "firstName": "Tessa",
+    "lastName": "Carman",
+    "address": "834 Binoc Ave",
+    "phone": "841-874-6512",
+    "age": 8,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Foster",
+    "lastName": "Shepard",
+    "address": "748 Townings Dr",
+    "phone": "841-874-6544",
+    "age": 41,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Clive",
+    "lastName": "Ferguson",
+    "address": "748 Townings Dr",
+    "phone": "841-874-6741",
+    "age": 26,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Tony",
+    "lastName": "Cooper",
+    "address": "112 Steppes Pl",
+    "phone": "841-874-6874",
+    "age": 26,
+    "medications": [
+      "hydrapermazol:300mg",
+      "dodoxadin:30mg"
+    ],
+    "allergies": [
+      "shellfish"
+    ]
+  },
+  {
+    "firstName": "Ron",
+    "lastName": "Peters",
+    "address": "112 Steppes Pl",
+    "phone": "841-874-8888",
+    "age": 55,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Allison",
+    "lastName": "Boyd",
+    "address": "112 Steppes Pl",
+    "phone": "841-874-9888",
+    "age": 55,
+    "medications": [
+      "aznol:200mg"
+    ],
+    "allergies": [
+      "nillacilan"
+    ]
+  },
+  {
+    "firstName": "Foster",
+    "lastName": "Shepard",
+    "address": "748 Townings Dr",
+    "phone": "841-874-6544",
+    "age": 41,
+    "medications": [],
+    "allergies": []
+  },
+  {
+    "firstName": "Clive",
+    "lastName": "Ferguson",
+    "address": "748 Townings Dr",
+    "phone": "841-874-6741",
+    "age": 26,
+    "medications": [],
+    "allergies": []
+  }
+]
