@@ -12,6 +12,7 @@ import com.openclassrooms.safetyAlerts.model.Medicalrecord;
 import com.openclassrooms.safetyAlerts.model.Person;
 import com.openclassrooms.safetyAlerts.serviceDAO.FirestationServiceImpl;
 import com.openclassrooms.safetyAlerts.serviceInterface.IFireService;
+import com.openclassrooms.safetyAlerts.serviceInterface.IFirestationService;
 import com.openclassrooms.safetyAlerts.serviceInterface.IFloodService;
 import com.openclassrooms.safetyAlerts.serviceInterface.IPhoneAlertService;
 import org.junit.jupiter.api.Assertions;
@@ -24,10 +25,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -59,6 +57,9 @@ public class FirestationServiceTest {
 
     @MockBean
     IPhoneAlertService phoneAlertServiceMock;
+
+    @MockBean
+    IFirestationService firestationServiceMock;
 
     @MockBean
     DataNotFoundException dataNotFoundExceptionMock;
@@ -211,11 +212,11 @@ public class FirestationServiceTest {
 
         //when
         Mockito.when(fireServiceMock.getFire(any(String.class))).thenReturn(fireCollection);
-        fireCollection = fireServiceMock.getFire(personBerthelot.getAddress());
+        fireCollection = fireServiceMock.getFire(firestation1.getAddress());
 
         //then
-        assertThat(fireServiceMock.getFire(personBerthelot.getAddress()).size()).isEqualTo(1);
-        assertThat(fireServiceMock.getFire(personBerthelot.getAddress())).isEqualTo(fireCollection);
+        assertThat(fireServiceMock.getFire(firestation1.getAddress()).size()).isEqualTo(1);
+        assertThat(fireServiceMock.getFire(firestation1.getAddress())).isEqualTo(fireCollection);
 
     }
 
@@ -231,13 +232,13 @@ public class FirestationServiceTest {
         firestationList.add(firestation1);
 
         //when
-        Mockito.when(firestationDAOMock.getFirestationByAddress(personBerthelot.getAddress())).thenReturn(firestation1);
-        fireCollection = fireServiceMock.getFire(personBerthelot.getAddress());
+        Mockito.when(firestationDAOMock.getFirestationByAddress(firestation1.getAddress())).thenReturn(firestation1);
+        fireCollection = fireServiceMock.getFire(firestation1.getAddress());
 
         //then
         try {
-            assertThat(fireServiceMock.getFire(personBerthelot.getAddress())).size().isEqualTo(0);
-            verify(fireServiceMock, Mockito.times(2)).getFire(personBerthelot.getAddress());
+            assertThat(fireServiceMock.getFire(firestation1.getAddress())).size().isEqualTo(0);
+            verify(fireServiceMock, Mockito.times(2)).getFire(firestation1.getAddress());
         } catch (InvalidArgumentException iae) {
             assert (iae.getMessage().contains("Invalid Argument Exception"));
 
@@ -256,8 +257,8 @@ public class FirestationServiceTest {
         firestationList.add(firestation1);
 
         //when
-        Mockito.when(firestationDAOMock.getFirestationByAddress(personBerthelot.getAddress())).thenReturn(firestation1);
-        fireCollection = fireServiceMock.getFire(personBerthelot.getAddress());
+        Mockito.when(firestationDAOMock.getFirestationByAddress(firestation1.getAddress())).thenReturn(firestation1);
+        fireCollection = fireServiceMock.getFire(firestation1.getAddress());
 
         //then
         try {
@@ -272,14 +273,18 @@ public class FirestationServiceTest {
     public void getValidFirestationListPhoneTest() throws Exception {
 
         //given
-
-
+        Collection<String> phoneAlertCollection = new HashSet<>();
+        List<Firestation> firestationList = new ArrayList<>();
+        phoneAlertCollection.add(personBerthelot.getPhone());
+        firestationList.add(firestation1);
 
         //when
-
-
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationList);
+        phoneAlertCollection = phoneAlertServiceMock.getPhoneList(personBerthelot.getPhone());
 
         //then
+        // assertThat(phoneAlertServiceMock.getPhoneList(personBerthelot.getPhone()).size()).isEqualTo(1);
+        assertThat(phoneAlertServiceMock.getPhoneList(personBerthelot.getPhone())).isEqualTo(phoneAlertCollection);
 
 
     }
@@ -288,10 +293,23 @@ public class FirestationServiceTest {
     public void getInvalidFirestationListPhoneTest() throws Exception {
 
         //given
+        Collection<String> phoneAlertCollection = new HashSet<>();
+        List<Firestation> firestationList = new ArrayList<>();
+        phoneAlertCollection.add(personBerthelot.getPhone());
+        firestationList.add(firestation1);
 
         //when
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationList);
+        phoneAlertCollection = phoneAlertServiceMock.getPhoneList(personBerthelot.getPhone());
 
         //then
+        try {
+            assertThat(phoneAlertServiceMock.getPhoneList(any(String.class))).size().isEqualTo(0);
+            verify(phoneAlertServiceMock, Mockito.times(1)).getPhoneList(personBerthelot.getPhone());
+        } catch (InvalidArgumentException iae) {
+            assert (iae.getMessage().contains("Invalid Argument Exception"));
+
+        }
 
     }
 
@@ -299,10 +317,23 @@ public class FirestationServiceTest {
     public void getEmptyFirestationListPhoneTest() throws Exception {
 
         //given
+        Collection<String> phoneAlertCollection = new HashSet<>();
+        List<Firestation> firestationList = new ArrayList<>();
+        phoneAlertCollection.add(personBerthelot.getPhone());
+        firestationList.add(firestation1);
 
         //when
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationList);
+        phoneAlertCollection = phoneAlertServiceMock.getPhoneList("");
 
         //then
+        try {
+            assertThat(phoneAlertServiceMock.getPhoneList(any(String.class))).size().isEqualTo(0);
+            verify(phoneAlertServiceMock, Mockito.times(1)).getPhoneList("");
+        } catch (InvalidArgumentException iae) {
+            assert (iae.getMessage().contains("ne peut être vide"));
+
+        }
 
     }
 
@@ -313,12 +344,18 @@ public class FirestationServiceTest {
         //given
         Collection<FirestationDTO> firestationDTOCollection = new ArrayList<>();
         List<Medicalrecord> medicalrecordList = new ArrayList<>();
+        List<Firestation> firestationListAddressByStation = new ArrayList<>();
         firestationDTOCollection.add(firestationDTO);
         medicalrecordList.add(medicalrecordBerthelot);
+        firestationListAddressByStation.add(firestation1);
 
         //when
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationListAddressByStation);
+        firestationDTOCollection = firestationServiceMock.getFirestationDTO(firestation1.getStation());
 
         //then
+        assertThat(firestationServiceMock.getFirestationDTO(firestation1.getStation())).isEqualTo(firestationDTOCollection);
+        // assertThat(firestationServiceMock.getFirestationDTO(firestation1.getStation()).size()).isEqualTo(1);
 
     }
 
@@ -326,10 +363,22 @@ public class FirestationServiceTest {
     public void getInvalidFirestationListFirestationDTOTest() throws Exception {
 
         //given
+        Collection<FirestationDTO> firestationDTOCollection = new ArrayList<>();
+        List<Medicalrecord> medicalrecordList = new ArrayList<>();
+        List<Firestation> firestationListAddressByStation = new ArrayList<>();
+        firestationListAddressByStation.add(firestation1);
 
         //when
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationListAddressByStation);
 
         //then
+        try {
+            assertThat(firestationServiceMock.getFirestationDTO(any(String.class))).size().isEqualTo(0);
+
+        } catch (InvalidArgumentException iae) {
+            assert (iae.getMessage().contains("Invalid Argument Exception"));
+
+        }
 
     }
 
@@ -337,11 +386,22 @@ public class FirestationServiceTest {
     public void getEmptyFirestationListFirestationDTOTest() throws Exception {
 
         //given
+        Collection<FirestationDTO> firestationDTOCollection = new ArrayList<>();
+        List<Medicalrecord> medicalrecordList = new ArrayList<>();
+        List<Firestation> firestationListAddressByStation = new ArrayList<>();
+        firestationListAddressByStation.add(firestation1);
 
         //when
+        Mockito.when(firestationDAOMock.getFirestationAddressByStation(any(String.class))).thenReturn(firestationListAddressByStation);
+        firestationDTOCollection = firestationServiceMock.getFirestationDTO("");
 
         //then
+        try {
+            assertThat(firestationServiceMock.getFirestationDTO(any(String.class))).size().isEqualTo(0);
+            verify(firestationServiceMock, Mockito.times(1)).getFirestationDTO("");
+        } catch (InvalidArgumentException iae) {
+            assert (iae.getMessage().contains("ne peut être vide"));
 
+        }
     }
-
 }

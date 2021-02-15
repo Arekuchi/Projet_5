@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
@@ -161,6 +162,20 @@ public class MedicalrecordServiceTest {
         //then
         Assertions.assertTrue(medicalRecordDAOMock.getMedicalrecords(medicalrecordBerthelot.getBirthdate()).add(medicalrecordBerthelot));
         verify(medicalRecordDAOMock, Mockito.times(1)).getMedicalrecords(any(String.class));
+
+    }
+
+    @Test
+    public void getMedicalrecordByNameTest() throws Exception {
+
+        //given
+        Medicalrecord medicalrecordList = medicalrecordBerthelot;
+
+        //when
+        Mockito.when((medicalRecordDAOMock.getMedicalRecordByName(any(String.class), any(String.class)))).thenReturn(medicalrecordBerthelot);
+
+        //then
+        assertThat(medicalRecordDAOMock.getMedicalRecordByName(medicalrecordBerthelot.getLastName(), medicalrecordBerthelot.getFirstName())).isEqualTo(medicalrecordList);
 
     }
 

@@ -20,7 +20,7 @@ public class PersonDAO implements IPersonDAO {
     @Override
     public boolean createPerson(Person person) {
         // ajout de la nouvelle personne en mémoire (Object JAVA)
-        dataRepository.getDatabase().getPersons().add(person);
+        dataRepository.getAllPersons().add(person);
         // commit pour appliquer les changements sur le json
         dataRepository.commit();
 
@@ -30,7 +30,7 @@ public class PersonDAO implements IPersonDAO {
     @Override
     public boolean deletePerson(Person person) {
         // suppression de la personne en mémoire -(Object JAVA)
-        boolean result=dataRepository.getDatabase().getPersons().remove(person);
+        boolean result=dataRepository.getAllPersons().remove(person);
         // commit
         dataRepository.commit();
 
@@ -40,7 +40,7 @@ public class PersonDAO implements IPersonDAO {
     @Override
     public boolean updatePerson(Person person) {
         //
-        if (dataRepository.getDatabase().getPersons().remove(person)) {
+        if (dataRepository.getAllPersons().remove(person)) {
             createPerson(person);
             return true;
         }
