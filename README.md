@@ -1,46 +1,24 @@
-# Projet 5 SafetyAlerts
+# Safety Alerts
+A command line app for managing the alerts for safety of a country. 
+This app uses Java to run and stores the data in Json File.
+API REST application for managing an Alert system to better prepare and understand all emergency situations.
+This app uses SPRING BOOT, all datas are in memory (charged from a file (json) safety.json in the resources folder of the project.
 
-Ceci est le projet 5 de la formation Développeur d'application en JAVA de Berthelot Alexis.
+### Prerequisites
 
-## Pré-requis
+- Java 1.8
+- Maven 3.6.x
+- Spring Boot 2.2.x
 
-Ce qu'il est requis pour commencer avec ce projet.
+### Running App
 
+mvn spring-boot:run (run app)
+mvn spring-boot:stop (stop run)
 
+### Getting Started
 
-### Installation
+Endpoint : http://localhost:8080/
 
-Les étapes pour installer votre programme....
-
-Dites ce qu'il faut faire...
-
-_exemple_: Executez la commande ``telnet mapscii.me`` pour commencer ensuite [...]
-
-
-Ensuite vous pouvez montrer ce que vous obtenez au final...
-
-## Démarrage
-
-Cette application web réponds au URLS suivantes :
-https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DAJava_P5/URLs.pdf
-
-Cette application web réponds aux Endpoints suivants :
-https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DAJava_P5/Endpoints.pdf
-
-
-## Déploiement
-
-
-
-
-## Fabriqué avec
-
-- IDE : IntelliJ IDEA 2020.3.2 (Community Edition)
-- Java version 1.8. / JDK 11
-- Maven
-- Spring Boot
-
-## Auteurs
-
-Berthelot Alexis
-
+Réponds aux URLs et Endpoints suivant : 
+- https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DAJava_P5/URLs.pdf
+- https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DAJava_P5/Endpoints.pdf
