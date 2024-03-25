@@ -22,12 +22,12 @@ public class PersonInfo {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastName = lastname;
     }
 
     public String getAddress() {

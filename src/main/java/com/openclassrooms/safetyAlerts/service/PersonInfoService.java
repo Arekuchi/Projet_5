@@ -24,6 +24,9 @@ public class PersonInfoService implements IPersonInfoService {
     @Autowired
     IMedicalrecordDAO medicalrecordDAO;
 
+    @Autowired
+    private Person person;
+
     @Override
     public Collection<PersonInfo> getPersonInfo(String lastName, String firstName) {
         Collection<PersonInfo> personInfoCollection = new ArrayList<>();
@@ -44,6 +47,21 @@ public class PersonInfoService implements IPersonInfoService {
             personInfo.setAge(CalculateAge.calculateAge(medicalrecordPerson.getBirthdate()));
             // si on veut rajouter la date de naissance personInfo.setBirthdate(medicalrecordPerson.getBirthdate());
 
+            personInfoCollection.add(personInfo);
+        }
+        return personInfoCollection;
+    }
+
+    @Override
+    public Collection<PersonInfo> getPersonInfo2(String lastname, String firstname) {
+        Collection<Person> collectionPerson = person.collectionPerson(lastname, firstname);
+        Collection<PersonInfo> personInfoCollection = new ArrayList<>();
+        for (Person person : collectionPerson) {
+            PersonInfo personInfo = new PersonInfo();
+            personInfo.setFirstName(person.getFirstName());
+            personInfo.setLastname(person.getLastName());
+            personInfo.setAddress(person.getAddress());
+            personInfo.setEmail(person.getEmail());
             personInfoCollection.add(personInfo);
         }
         return personInfoCollection;
